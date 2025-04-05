@@ -14,6 +14,9 @@ A React Native application featuring interactive Google Maps with:
 - 🗑️ Clear history functionality
 - 📱 Responsive design for iOS and Android
 
+# Install React Native CLI
+* npm install -g react-native-cli
+
 ## Installation
 
 * git clone https://github.com/arashmeester/google-map.git
