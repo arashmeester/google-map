@@ -134,7 +134,7 @@ export default function FullScreenMap() {
             }}
           >
             <View>
-              <Text style={styles.historyTitle}>Search History</Text>
+              <Text style={styles.historyTitle}>History</Text>
             </View>
             <View>
               <TouchableOpacity onPress={() => setSearchHistory([])}>
