@@ -2,8 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import MapView from "../components/MapView";
-import Button from "../components/Button";
+import FullScreenMap from "../components/FullScreenMap";
 
 type RootStackParamList = {
   Home: undefined;
@@ -17,9 +16,7 @@ type Props = {
 const HomeScreen: React.FC<Props> = ({ navigation }) => (
   <SafeAreaView style={styles.container}>
     <View style={styles.container}>
-      <MapView></MapView>
-      {/* <Text style={styles.title}>Home Screen</Text> */}
-      {/* <Button label="Go to Details" onPress={() => navigation.navigate('Details')} /> */}
+      <FullScreenMap></FullScreenMap>
     </View>
   </SafeAreaView>
 );
@@ -29,10 +26,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
   },
 });
 
