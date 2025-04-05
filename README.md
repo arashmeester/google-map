@@ -10,16 +10,15 @@ A React Native application featuring interactive Google Maps with:
 
 - 🔍 Google Places autocomplete search
 - 📍 Interactive markers with info popups
-- ⏱️ Search history with timestamps
+- ⏱️ Show history with timestamps
 - 🗑️ Clear history functionality
-- 🗺️ Click anywhere on map to place marker
 - 📱 Responsive design for iOS and Android
 
 ## Installation
 
 * git clone https://github.com/arashmeester/google-map.git
 * cd google-map
+* download expo go from google playstore / appstore
 * run npm install
 * run npm start
-* download expo go from google playstore / appstore
 * scan generated QR code
