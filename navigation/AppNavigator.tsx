@@ -6,7 +6,6 @@ import {
     StatusBar,
   } from 'react-native';
 import HomeScreen from "../screens/HomeScreen";
-// import DetailsScreen from '../screens/DetailsScreen';
 
 type RootStackParamList = {
   Home: undefined;
