@@ -8,22 +8,31 @@ import {
   TouchableOpacity,
 } from "react-native";
 import MapView, { Marker } from "react-native-maps";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import { GooglePlacesAutocomplete, GooglePlaceData, GooglePlaceDetail } from "react-native-google-places-autocomplete";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function FullScreenMap() {
+  interface region {
+    latitude: number;
+    longitude: number;
+    latitudeDelta: number;
+    longitudeDelta: number;
+    title: string;
+    description: string;
+  }
+
   const [region, setRegion] = useState({
     latitude: 3.139,
     longitude: 101.6869,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
-  });
+  } as region);
 
-  const [marker, setMarker] = useState(null);
+  const [marker, setMarker] = useState({} as region);
 
   const [searchHistory, setSearchHistory] = useState([{}]);
 
-  const handlePlaceSelect = (data, details) => {
+  const handlePlaceSelect = (data: GooglePlaceData, details: GooglePlaceDetail): void => {
     const location = details.geometry.location;
     const newHistoryItem = {
       id: Date.now().toString(),
@@ -40,14 +49,14 @@ export default function FullScreenMap() {
       longitude: location.lng,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
-    });
+    } as region);
 
     setMarker({
       latitude: location.lat,
       longitude: location.lng,
       title: data.structured_formatting.main_text,
       description: data.description,
-    });
+    } as region);
 
     // Add to history (newest first)
     setSearchHistory((prev) => [newHistoryItem, ...prev]);
@@ -61,13 +70,13 @@ export default function FullScreenMap() {
       longitude: item.longitude,
       latitudeDelta: 0.0922,
       longitudeDelta: 0.0421,
-    });
+    } as region);
     setMarker({
       latitude: item.latitude,
       longitude: item.longitude,
       title: item.name,
       description: item.description,
-    });
+    } as region);
   };
 
   // Load saved history on startup
@@ -156,7 +165,9 @@ export default function FullScreenMap() {
                   }}
                 >
                   <Text style={styles.historyText}>{item.name}</Text>
-                  <Text style={styles.historyDesc}>{new Date(item.timestamp).toLocaleTimeString()}</Text>
+                  <Text style={styles.historyDesc}>
+                    {new Date(item.timestamp).toLocaleTimeString()}
+                  </Text>
                 </View>
               </TouchableOpacity>
             )}
